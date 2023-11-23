@@ -1,2 +1,3 @@
 <app-sidebar (onToggleSidenav)="onToggleSideNav($event)"></app-sidebar>
+<app-menu [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></app-menu>
 <app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></app-body>
