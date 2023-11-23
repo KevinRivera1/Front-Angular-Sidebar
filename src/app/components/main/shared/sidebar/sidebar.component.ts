@@ -1,5 +1,7 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { INavbarData, fadeInOut } from './helper';
 import { navbarData } from './nav-data';
 
 interface SideNavToggle {
@@ -12,16 +14,7 @@ interface SideNavToggle {
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
   animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('350ms', style({ opacity: 1 }))
-      ]),
-      transition(':leave', [
-        style({ opacity: 1 }),
-        animate('350ms', style({ opacity: 0 }))
-      ]),
-    ]),
+    fadeInOut,
     trigger('rotate', [
       transition(':enter', [
         animate('1000ms', keyframes([
@@ -39,6 +32,7 @@ export class SidebarComponent implements OnInit {
   collapsed = false;
   screenWidth = 0;
   navData = navbarData;
+  multiple: boolean = true;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
@@ -49,9 +43,12 @@ export class SidebarComponent implements OnInit {
     }
   }
 
+  constructor(public router: Router) { }
+
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
   }
+
 
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
@@ -60,5 +57,36 @@ export class SidebarComponent implements OnInit {
   closeSidenav(): void {
     this.collapsed = false;
     this.onToggleSidenav.emit({ screenWidth: this.screenWidth, collapsed: this.collapsed });
+  }
+
+  handleClick(item: INavbarData): void {
+    this.shrinkItems(item);
+    item.expanded = !item.expanded;
+  }
+
+  getActiveClass(data: INavbarData): string {
+    return this.router.url.includes(data.routeLink) ? 'active' : '';
+  }
+
+  /* shrinkItems(item: INavbarData): void {
+    if (!this.multiple) {
+      for (let modelItem of this.navData) {
+        if (item !== modelItem && modelItem.expanded) {
+          modelItem.expanded = false;
+        }
+      }
+    }
+  } */
+
+  shrinkItems(item: INavbarData): void {
+    if (this.multiple) {
+      return;
+    }
+
+    this.navData.forEach((modelItem) => {
+      if (item !== modelItem && modelItem.expanded) {
+        modelItem.expanded = false;
+      }
+    });
   }
 }
