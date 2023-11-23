@@ -4,12 +4,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { SublevelMenuComponent } from './sidebar/sublevel-menu.component';
 
 
 @NgModule({
   declarations: [
     MenuComponent,
-    SidebarComponent
+    SidebarComponent,
+    SublevelMenuComponent
   ],
   imports: [
     BrowserAnimationsModule,
