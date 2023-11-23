@@ -12,11 +12,11 @@ export const navbarData: INavbarData[] = [
         label: 'Products',
         items: [
             {
-                routeLink: 'list/products',
+                routeLink: 'dashboard/products',
                 label: 'All Products'
             },
             {
-                routeLink: 'add/product',
+                routeLink: 'dashboard/products',
                 label: 'Add Product',
             },
             {
@@ -34,7 +34,7 @@ export const navbarData: INavbarData[] = [
                     {
                         routeLink: 'add/category',
                         label: 'Add Category',
-                        items:[
+                        items: [
                             {
                                 routeLink: 'list/categories',
                                 label: 'All Categories'
@@ -43,10 +43,10 @@ export const navbarData: INavbarData[] = [
                                 routeLink: 'add/category',
                                 label: 'Add Category',
                             }
-                        
+
                         ]
                     }
-                
+
                 ]
             }
         ]
