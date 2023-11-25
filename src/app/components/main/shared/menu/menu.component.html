@@ -2,24 +2,29 @@
   <div class="head-content">
     <div class="head-content-left">
       <div class="search-container">
-        <div class="normal-search">
+        <div *ngIf="canShowSearchOverlay" class="normal-search">
           <input type="search" class="search" placeholder="Search..." name="" id="">
           <i class="fa fa-search search-icon"></i>
+        </div>
+        <div *ngIf="!canShowSearchOverlay">
+          <button [cdkMenuTriggerFor]="searchOverlay" class="search-menu-btn ripple">
+            <i class="fa fa-search search-icon"></i>
+          </button>
         </div>
       </div>
     </div>
     <div class="head-content-right">
       <div class="head-menu">
-        <div class="head-menu-item">
+        <!-- <div class="head-menu-item">
           <button class="head-menu-item-btn ripple">
             <img [src]="'assets/flags/us.png'" alt="flag" class="flag">
           </button>
-        </div>
-        <div class="head-menu-item">
+        </div> -->
+        <!-- <div class="head-menu-item">
           <button class="head-menu-item-btn ripple">
             <i class="fa fa-expand menu-icon"></i>
           </button>
-        </div>
+        </div> -->
         <div class="head-menu-item">
           <button class="head-menu-item-btn ripple">
             <i class="fa fa-bell menu-icon"></i>
@@ -32,11 +37,35 @@
         </div>
       </div>
       <div class="head-user-avatar-container">
-        <div class="head-user-avatar">
-          <img [src]="'../../assets/user.jpeg'" alt="user" class="user-avatar">
+        <div class="head-user-avatar" [cdkMenuTriggerFor]="userOverlay">
+          <img [src]="'../../../../../assets/user.jpeg'" alt="user" class="user-avatar">
           <div class="circle-indicator pulse"></div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Barra de busqueda componente personalizado -->
+<ng-template #searchOverlay>
+  <div class="overlay overlay-search overlay-fall" cdkMenu>
+    <input type="search" class="search" placeholder="Search...">
+    <button class="search-btn">
+      <i class="fa fa-search search-icon"></i>
+    </button>
+  </div>
+</ng-template>
+
+<!-- Menu de opciones del perfil de usuario -->
+<ng-template #userOverlay>
+  <div class="overlay overlay-user overlay-fall" cdkMenu>
+    <ul>
+      <li *ngFor="let item of userItems">
+        <a>
+          <i class="icon" [ngClass]="item.icon"></i>
+          <span>{{item.label}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</ng-template>
