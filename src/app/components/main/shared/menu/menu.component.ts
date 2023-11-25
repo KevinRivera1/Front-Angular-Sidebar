@@ -44,4 +44,8 @@ export class MenuComponent implements OnInit {
       this.canShowSearchOverlay = false;
     }
   }
+
+  trackByFn(index: number, item: any) {
+    return index;
+  }
 }
