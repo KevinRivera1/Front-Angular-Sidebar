@@ -97,7 +97,7 @@
 
                         &:hover,
                         &:focus {
-                            background-color: #eff2f3;
+                            //background-color: #eff2f3;
 
                             .menu-icon {
                                 color: #699dfa;
@@ -242,6 +242,24 @@
             }
 
         }
+    }
+}
+
+.ripple {
+    background-position: center;
+    background         : #fff;
+    transition         : background 0.8s;
+
+    &:hover,
+    &:focus {
+        background: #eff2f3 radial-gradient(circle, transparent 1%, #eff2f3 1%) center/15000%;
+
+    }
+
+    &:active {
+        background-color: #bec2c4;
+        background-size : 100%;
+        transition      : background 0s;
     }
 }
 
