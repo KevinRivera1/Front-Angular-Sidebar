@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SublevelMenuComponent } from './sidebar/sublevel-menu.component';
-
+import { OverlayModule } from '@angular/cdk/overlay';
+import { CdkMenuModule } from '@angular/cdk/menu';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { SublevelMenuComponent } from './sidebar/sublevel-menu.component';
   imports: [
     BrowserAnimationsModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    OverlayModule,
+    CdkMenuModule
   ],
   exports: [
     MenuComponent,
