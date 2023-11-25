@@ -89,4 +89,8 @@ export class SidebarComponent implements OnInit {
       }
     });
   }
+
+  trackByFn(index: number, item: any) {
+    return index;
+  }
 }
