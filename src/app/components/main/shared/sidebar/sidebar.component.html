@@ -8,7 +8,7 @@
   </div>
   <div class="scrollwrap scrollwrap-delayed">
     <ul class="sidenav-nav">
-      <li class="sidenav-nav-item" *ngFor="let data of navData">
+      <li class="sidenav-nav-item" *ngFor="let data of navData; let i = index; trackBy: trackByFn">
         <a class="sidenav-nav-link" role="link" aria-label="link" *ngIf="data.items && data.items.length > 0"
           (click)="handleClick(data)" [ngClass]="getActiveClass(data)">
           <i class="sidenav-link-icon" [ngClass]="data.icon"></i>
