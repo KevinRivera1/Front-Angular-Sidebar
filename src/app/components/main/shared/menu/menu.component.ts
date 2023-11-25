@@ -1,3 +1,4 @@
+import { userItems } from './header-dummy-data';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -6,12 +7,14 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  
+
 
   @Input() collapsed = false;
   @Input() screenWidth = 0;
 
   canShowSearchOverlay = false;
+
+  userItems = userItems;
 
   constructor() { }
 
